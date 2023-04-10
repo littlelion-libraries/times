@@ -1,3 +1,5 @@
+using System;
+
 namespace Times
 {
     public readonly struct ShortTimeSpan
@@ -8,6 +10,11 @@ namespace Times
         }
 
         public float Seconds { get; }
+
+        public static DateTime operator +(DateTime a, ShortTimeSpan b)
+        {
+            return a + TimeSpan.FromSeconds(b.Seconds);
+        }
 
         public static float operator +(float a, ShortTimeSpan b)
         {
